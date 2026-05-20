@@ -144,7 +144,7 @@ export default function MercuryCatalog() {
                   onMouseLeave={(e) => { e.currentTarget.style.transform = '' }}
                 >
                   <div className="motor-card-img">
-                    <ProductImage src={imgSrc(m)} alt={`Mercury ${m.hp} HP ${familiaInfo[m.fam].etiqueta}`} size={38} />
+                    <ProductImage src={imgSrc(m)} alt={`Mercury ${m.hp} HP ${familiaInfo[m.fam].etiqueta}`} size={38} label={familiaInfo[m.fam].etiqueta} />
                     <span className={`motor-fam-badge fam-${m.fam.replace(/\s+/g, '').toLowerCase()}`}>
                       {familiaInfo[m.fam].etiqueta}
                     </span>
@@ -204,7 +204,7 @@ export default function MercuryCatalog() {
           <div className="motor-modal" onClick={(e) => e.stopPropagation()}>
             <button className="motor-modal-close" onClick={() => setSel(null)} aria-label="Cerrar">×</button>
             <div className="motor-modal-img">
-              <ProductImage src={imgSrc(sel)} alt={`Mercury ${sel.hp} HP ${familiaInfo[sel.fam].etiqueta}`} size={72} />
+              <ProductImage src={imgSrc(sel)} alt={`Mercury ${sel.hp} HP ${familiaInfo[sel.fam].etiqueta}`} size={72} label={familiaInfo[sel.fam].etiqueta} />
             </div>
             <div className="motor-modal-body">
               <span className={`motor-fam-badge fam-${sel.fam.replace(/\s+/g, '').toLowerCase()}`}>

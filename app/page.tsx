@@ -5,6 +5,7 @@ import PanelsSection from '@/components/PanelsSection'
 import MercuryCatalog from '@/components/MercuryCatalog'
 import WhatsAppContact from '@/components/WhatsAppContact'
 import WhatsApp from '@/components/WhatsApp'
+import Footer from '@/components/Footer'
 import Icon from '@/components/Icon'
 import { site } from '@/data/site'
 
@@ -82,21 +83,8 @@ export default function Home() {
         <WhatsAppContact />
       </main>
 
-      {/* Footer */}
-      <footer className="footer">
-        <div className="container">
-          <div className="footer-inner">
-            <span className="footer-logo">{site.nombre}</span>
-            <span className="footer-copy">
-              © {new Date().getFullYear()} {site.nombre} · Todos los derechos reservados
-            </span>
-            <div className="footer-links">
-              <a href="#categorias">Categorías</a>
-              <a href="#contacto">Contacto</a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      {/* Footer con garantías + mapa */}
+      <Footer />
 
       {/* WhatsApp flotante */}
       <WhatsApp />

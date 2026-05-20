@@ -1422,32 +1422,159 @@ input, textarea, select { font-family: inherit; }
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   GARANTÍAS / MARCA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.garantias {
+  background: var(--navy);
+  padding: 3.5rem 0;
+  border-top: 1px solid rgba(15,67,99,0.3);
+}
+.garantias-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+.garantia-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+}
+.garantia-icon {
+  width: 48px; height: 48px;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--lavender);
+  background: rgba(200,205,237,0.08);
+  border: 1px solid rgba(200,205,237,0.22);
+  border-radius: 12px;
+}
+.garantia-item h4 {
+  font-family: var(--font-heading);
+  font-size: 0.98rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  margin-bottom: 0.25rem;
+}
+.garantia-item p { font-size: 0.82rem; color: var(--gray); line-height: 1.5; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    FOOTER
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .footer {
   background: var(--carbon);
-  padding: 1.75rem 0;
+  padding: 3.5rem 0 1.75rem;
   border-top: 1px solid rgba(15,67,99,0.4);
 }
-.footer-inner {
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1.1fr;
+  gap: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+.footer-logo-img {
+  width: auto;
+  height: 90px;
+  object-fit: contain;
+  object-position: left center;
+  margin-bottom: 1rem;
+  filter: brightness(0) invert(1);
+  opacity: 0.92;
+}
+.footer-desc {
+  font-size: 0.85rem;
+  color: var(--gray);
+  line-height: 1.6;
+  max-width: 320px;
+  margin-bottom: 1.25rem;
+}
+.footer-social { display: flex; gap: 0.6rem; }
+.footer-social a {
+  width: 38px; height: 38px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--lavender);
+  background: rgba(200,205,237,0.06);
+  border: 1px solid rgba(200,205,237,0.2);
+  border-radius: var(--radius);
+  transition: all 0.2s;
+}
+.footer-social a:hover { background: var(--petrol); border-color: var(--lavender); transform: translateY(-2px); }
+.footer-col-title {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--white);
+  margin-bottom: 1.1rem;
+}
+.footer-list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+.footer-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.85rem;
+  color: var(--gray);
+}
+.footer-list li svg { color: var(--lavender); flex-shrink: 0; }
+.footer-list a { color: var(--gray); transition: color 0.2s; }
+.footer-list a:hover { color: var(--lavender); }
+.footer-map {
+  display: block;
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid rgba(15,67,99,0.5);
+  height: 180px;
+}
+.footer-map iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  filter: grayscale(0.3) invert(0.92) hue-rotate(180deg) contrast(0.9);
+}
+.footer-map-cta {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.5rem 0.8rem;
+  background: rgba(1,23,33,0.85);
+  color: var(--lavender);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+}
+.footer-bottom {
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  font-size: 0.78rem;
+  color: var(--gray);
 }
-.footer-logo {
-  font-family: var(--font-brand);
-  font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--white);
-}
-.footer-copy { font-size: 0.78rem; color: var(--gray); }
 .footer-links { display: flex; gap: 1.25rem; }
 .footer-links a { font-size: 0.78rem; color: var(--gray); transition: color 0.2s; }
 .footer-links a:hover { color: var(--lavender); }
+
+@media (max-width: 860px) {
+  .garantias-grid { grid-template-columns: repeat(2, 1fr); gap: 1.75rem; }
+  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-logo-img { object-position: center; margin-left: auto; margin-right: auto; display: block; }
+  .footer-brand-col { text-align: center; }
+  .footer-desc { margin-left: auto; margin-right: auto; }
+  .footer-social { justify-content: center; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+@media (max-width: 460px) {
+  .garantias-grid { grid-template-columns: 1fr; }
+}
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    WHATSAPP FLOTANTE
@@ -1547,7 +1674,6 @@ input, textarea, select { font-family: inherit; }
   .panel.active .panel-label-vertical { opacity: 0; }
   .panels-dots { display: flex; }
   .data-strip-inner { justify-content: center; }
-  .footer-inner { flex-direction: column; text-align: center; }
   .whatsapp-btn span.whatsapp-label { display: none; }
   .whatsapp-btn { padding: 0.75rem; border-radius: 50%; }
 }

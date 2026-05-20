@@ -1749,7 +1749,6 @@ input, textarea, select { font-family: inherit; }
   .panel-label-vertical {
     bottom: auto;
     top: 50%;
-    transform: translateX(-50%) translateY(-50%);
     writing-mode: horizontal-tb;
     transform: translateY(-50%);
     left: 1.5rem;
@@ -1766,4 +1765,51 @@ input, textarea, select { font-family: inherit; }
   .hero-band { padding: 6rem 0 2.5rem; }
   .section { padding: 3.5rem 0; }
   .contact-form-box { padding: 1.5rem; }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   PULIDO MOBILE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+@media (max-width: 760px) {
+  /* Secciones más compactas en celular */
+  .catalog-section { padding: 4rem 0; }
+  .contacto-section { padding: 3.5rem 0; }
+  .garantias { padding: 2.5rem 0; }
+
+  /* Sello Mercury: que no se desborde, centrado */
+  .mercury-seal {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 0.7rem;
+    padding: 0.5rem 1rem;
+  }
+  .mercury-seal-divider { display: none; }
+
+  /* Filtros avanzados: selects cómodos, datos abajo */
+  .catalog-advanced { gap: 0.75rem 1rem; }
+  .catalog-select { flex: 1 1 44%; }
+  .catalog-select select { width: 100%; }
+  .catalog-result-count { flex-basis: 100%; text-align: center; padding-bottom: 0; }
+  .catalog-clear { flex-basis: 100%; }
+}
+
+@media (max-width: 480px) {
+  /* Navbar: que la bajada de marca no apriete */
+  .navbar-brand-name { font-size: 0.92rem; }
+  .navbar-brand-tag { font-size: 0.52rem; letter-spacing: 0.12em; }
+  .navbar-logo-img { height: 40px; }
+
+  /* Catálogo: HP un toque más chico para que respire */
+  .motor-hp { font-size: 1.85rem; }
+
+  /* Sello Mercury aún más compacto */
+  .mercury-seal-logo { height: 22px; }
+  .mercury-seal-label { font-size: 0.66rem; }
+
+  /* Modal de comparación: título no choca con la X */
+  .compare-modal { padding: 1.5rem 1.1rem; }
+  .compare-modal-title { padding: 0 2rem; font-size: 1.2rem; }
+
+  /* Modal de detalle: specs en 1 columna si hace falta */
+  .motor-modal-specs { grid-template-columns: 1fr 1fr; }
 }

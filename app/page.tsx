@@ -6,12 +6,14 @@ import MercuryCatalog from '@/components/MercuryCatalog'
 import WhatsAppContact from '@/components/WhatsAppContact'
 import WhatsApp from '@/components/WhatsApp'
 import Footer from '@/components/Footer'
+import ScrollProgress from '@/components/ScrollProgress'
 import Icon from '@/components/Icon'
 import { site } from '@/data/site'
 
 export default function Home() {
   return (
     <>
+      <ScrollProgress />
       <Navbar />
 
       <main>

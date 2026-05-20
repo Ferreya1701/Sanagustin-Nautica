@@ -1,5 +1,6 @@
 import Navbar from '@/components/Navbar'
 import PanelsSection from '@/components/PanelsSection'
+import MercuryCatalog from '@/components/MercuryCatalog'
 import WhatsAppContact from '@/components/WhatsAppContact'
 import WhatsApp from '@/components/WhatsApp'
 import Icon from '@/components/Icon'
@@ -29,6 +30,9 @@ export default function Home() {
 
         {/* 5 Expanding Panels */}
         <PanelsSection />
+
+        {/* Catálogo Mercury */}
+        <MercuryCatalog />
 
         {/* Data strip */}
         <div className="data-strip">

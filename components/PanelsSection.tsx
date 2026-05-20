@@ -90,8 +90,8 @@ export default function PanelsSection() {
     return () => window.removeEventListener('sann:activate-panel', handler)
   }, [])
 
-  const goToContacto = () => {
-    document.querySelector('#contacto')?.scrollIntoView({ behavior: 'smooth' })
+  const scrollTo = (id: string) => {
+    document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
@@ -143,10 +143,10 @@ export default function PanelsSection() {
                 className="btn btn-outline"
                 onClick={(e) => {
                   e.stopPropagation()
-                  goToContacto()
+                  scrollTo(p.id === 'motores' ? '#motores' : '#contacto')
                 }}
               >
-                {p.cta} →
+                {p.id === 'motores' ? 'Ver catálogo' : p.cta} →
               </button>
             </div>
           </div>

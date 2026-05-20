@@ -504,6 +504,168 @@ input, textarea, select { font-family: inherit; }
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   CATÁLOGO MERCURY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.catalog-section {
+  background: var(--navy);
+  padding: 5.5rem 0;
+}
+.catalog-header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 2.5rem;
+}
+.catalog-header h2 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--white);
+  margin: 0.5rem 0 0.75rem;
+}
+.catalog-header h2 em { font-style: normal; color: var(--lavender); }
+.catalog-header p { color: var(--gray); font-size: 1rem; }
+
+.catalog-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+.catalog-filter {
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.5rem 1.2rem;
+  border-radius: 999px;
+  border: 1px solid rgba(200,205,237,0.2);
+  color: var(--gray);
+  background: transparent;
+  transition: all 0.2s ease;
+}
+.catalog-filter:hover { color: var(--white); border-color: var(--lavender); }
+.catalog-filter.active {
+  background: var(--petrol);
+  border-color: var(--petrol);
+  color: var(--white);
+}
+.catalog-fam-desc {
+  text-align: center;
+  color: rgba(244,246,251,0.7);
+  font-size: 0.92rem;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 1.1rem;
+}
+.motor-card-v2 {
+  background: var(--surface);
+  border: 1px solid rgba(15,67,99,0.4);
+  border-radius: var(--radius-lg);
+  padding: 1.4rem 1.25rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  position: relative;
+}
+.motor-card-v2:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(200,205,237,0.3);
+}
+.motor-fam-badge {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.22rem 0.6rem;
+  border-radius: 5px;
+  margin-bottom: 0.9rem;
+}
+.fam-fourstroke { background: rgba(26,79,122,0.35); color: var(--lavender); border: 1px solid rgba(200,205,237,0.3); }
+.fam-proxs      { background: rgba(122,52,26,0.3);  color: #fab57d; border: 1px solid rgba(250,181,125,0.3); }
+.fam-verado     { background: rgba(82,52,122,0.3);  color: #cdb5f5; border: 1px solid rgba(205,181,245,0.3); }
+.fam-seapro     { background: rgba(26,107,62,0.3);  color: #7dfab5; border: 1px solid rgba(125,250,181,0.3); }
+
+.motor-hp {
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  line-height: 1;
+  color: var(--white);
+  font-weight: 700;
+}
+.motor-hp span {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--lavender);
+  margin-left: 0.3rem;
+  letter-spacing: 0.05em;
+}
+.motor-tipo {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gray);
+  margin: 0.35rem 0 1rem;
+}
+.motor-precio {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.1rem;
+}
+.motor-precio-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+.motor-precio-valor {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--white);
+}
+.motor-consultar {
+  margin-top: auto;
+  width: 100%;
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.6rem;
+  border-radius: var(--radius);
+  background: rgba(200,205,237,0.08);
+  border: 1px solid rgba(200,205,237,0.25);
+  color: var(--lavender);
+  transition: all 0.2s ease;
+}
+.motor-consultar:hover {
+  background: var(--petrol);
+  border-color: var(--petrol);
+  color: var(--white);
+}
+
+@media (max-width: 600px) {
+  .catalog-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+  .motor-card-v2 { padding: 1.1rem 0.9rem; }
+  .motor-hp { font-size: 2.1rem; }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    STRIP DE DATOS (entre paneles y contacto)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .data-strip {

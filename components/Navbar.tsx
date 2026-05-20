@@ -2,8 +2,8 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 
-const navLinks = [
-  { label: 'Motores', panel: 'motores' },
+const navLinks: { label: string; panel?: string; href?: string }[] = [
+  { label: 'Motores', href: '#motores' },
   { label: 'Cascos', panel: 'cascos' },
   { label: 'Accesorios', panel: 'accesorios' },
   { label: 'Usados', panel: 'usados' },
@@ -57,8 +57,14 @@ export default function Navbar() {
             {/* Desktop nav */}
             <ul className="navbar-nav">
               {navLinks.map((l) => (
-                <li key={l.panel}>
-                  <a href="#categorias" onClick={(e) => { e.preventDefault(); handlePanel(l.panel) }}>
+                <li key={l.label}>
+                  <a
+                    href={l.href ?? '#categorias'}
+                    onClick={(e) => {
+                      e.preventDefault()
+                      l.href ? handleLink(l.href) : handlePanel(l.panel!)
+                    }}
+                  >
                     {l.label}
                   </a>
                 </li>
@@ -91,9 +97,12 @@ export default function Navbar() {
         <button className="mobile-close" onClick={() => setMenuOpen(false)}>✕</button>
         {navLinks.map((l) => (
           <a
-            key={l.panel}
-            href="#categorias"
-            onClick={(e) => { e.preventDefault(); handlePanel(l.panel) }}
+            key={l.label}
+            href={l.href ?? '#categorias'}
+            onClick={(e) => {
+              e.preventDefault()
+              l.href ? handleLink(l.href) : handlePanel(l.panel!)
+            }}
           >
             {l.label}
           </a>

@@ -15,6 +15,7 @@ import {
   enRangoHp,
   descripcion,
   imgSrc,
+  specs,
 } from '@/data/motores'
 
 function mensajeConsulta(m: Modelo) {
@@ -218,6 +219,17 @@ export default function MercuryCatalog() {
                 <div className="motor-modal-spec"><span>Uso</span><strong>{usosDe(sel).join(', ')}</strong></div>
               </div>
               <p className="motor-modal-desc">{descripcion(sel)}</p>
+              <div className="motor-ficha">
+                <div className="motor-ficha-head">
+                  <span>Ficha técnica</span>
+                  <span className="motor-ficha-nota">orientativa · confirmar</span>
+                </div>
+                <ul className="motor-ficha-list">
+                  {specs(sel).map((s) => (
+                    <li key={s.k}><span>{s.k}</span><strong>{s.v}</strong></li>
+                  ))}
+                </ul>
+              </div>
               <div className="motor-modal-btns">
                 {site.asesores.map((a, idx) => (
                   <a

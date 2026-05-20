@@ -29,5 +29,15 @@ SeaPro:     seapro-15 / 25 / 40 / 60 / 75 / 90 / 115 / 150 / 200 / 225 / 250 / 3
 (todos terminan en .png — ej: fourstroke-150.png)
 
 -----------------------------------------------------------------
+IMPORTANTE — 2 pasos para que aparezca una foto:
+  1) Dejá el archivo .png en esta carpeta (public/motores/)
+  2) Agregá su nombre (sin .png) en la lista `imagenesCargadas`
+     dentro de  data/motores.ts
+
+Ejemplo: subís fourstroke.png, proxs.png, verado.png, seapro.png  ->
+  en data/motores.ts dejá:
+  export const imagenesCargadas = ['fourstroke','proxs','verado','seapro']
+
+Esto evita errores 404 en la consola por fotos que todavía no existen.
+
 RECOMENDADO: fondo transparente o blanco, mínimo 800x800 px.
-Dejá los archivos en esta carpeta (public/motores/) y aparecen solos.

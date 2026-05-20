@@ -313,6 +313,40 @@ input, textarea, select { font-family: inherit; }
   margin: 0 auto 0.5rem;
 }
 
+/* Sello Distribuidor Oficial Mercury */
+.mercury-seal {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  background: var(--white);
+  border-radius: 999px;
+  padding: 0.55rem 1.4rem;
+  margin-top: 2rem;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.35);
+}
+.mercury-seal-logo {
+  height: 26px;
+  width: auto;
+  object-fit: contain;
+}
+.mercury-seal-divider {
+  width: 1px;
+  height: 22px;
+  background: rgba(0,0,0,0.15);
+}
+.mercury-seal-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--carbon);
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.mercury-seal-label svg { color: #0ea04a; }
+
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    EXPANDING PANELS (estilo navalmotor.com)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */

@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Navbar from '@/components/Navbar'
 import PanelsSection from '@/components/PanelsSection'
 import MercuryCatalog from '@/components/MercuryCatalog'
@@ -24,6 +25,14 @@ export default function Home() {
                 Motores, cascos, accesorios y atención personalizada.<br />
                 Más de 20 años en el rubro, en Av. Aristobulo 9534.
               </p>
+
+              <div className="mercury-seal">
+                <Image src="/mercury-logo.png" alt="Mercury" width={120} height={32} className="mercury-seal-logo" />
+                <span className="mercury-seal-divider" />
+                <span className="mercury-seal-label">
+                  <Icon name="usado" size={15} /> Distribuidor Oficial
+                </span>
+              </div>
             </div>
           </div>
         </section>

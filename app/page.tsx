@@ -1,6 +1,6 @@
 import Navbar from '@/components/Navbar'
 import PanelsSection from '@/components/PanelsSection'
-import Contact from '@/components/Contact'
+import WhatsAppContact from '@/components/WhatsAppContact'
 import WhatsApp from '@/components/WhatsApp'
 
 export default function Home() {
@@ -53,8 +53,8 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Contact */}
-        <Contact />
+        {/* Contacto 100% WhatsApp */}
+        <WhatsAppContact />
       </main>
 
       {/* Footer */}
@@ -68,7 +68,6 @@ export default function Home() {
             <div className="footer-links">
               <a href="#categorias">Categorías</a>
               <a href="#contacto">Contacto</a>
-              <a href="mailto:sanagustinnautica@gmail.com">Email</a>
             </div>
           </div>
         </div>

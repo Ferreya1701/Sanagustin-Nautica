@@ -1,5 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 
 const navLinks = [
   { label: 'Motores', href: '#motores' },
@@ -32,33 +33,14 @@ export default function Navbar() {
           <div className="navbar-inner">
             {/* Logo */}
             <a href="#inicio" className="navbar-brand" onClick={() => handleLink('#inicio')}>
-              {/* SVG inline del logo Sanagustin Nautica */}
-              <svg
-                viewBox="0 0 130 65"
-                height="42"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                aria-label="Sanagustin Nautica logo"
-              >
-                {/* Casco superior - blade 1 */}
-                <path
-                  d="M18 24 Q40 8 90 16 Q110 20 118 22 L112 30 Q80 24 46 30 Q28 34 22 36 Z"
-                  fill="currentColor"
-                  opacity="0.95"
-                />
-                {/* Casco inferior - blade 2 */}
-                <path
-                  d="M22 38 Q50 50 96 42 Q110 39 118 36 L114 44 Q90 52 56 52 Q32 52 20 44 Z"
-                  fill="currentColor"
-                  opacity="0.95"
-                />
-                {/* Reflejo interior */}
-                <path
-                  d="M46 30 Q70 26 100 30 L96 36 Q68 32 48 36 Z"
-                  fill="currentColor"
-                  opacity="0.3"
-                />
-              </svg>
+              <Image
+                src="/logo.png"
+                alt="Sanagustin Nautica"
+                height={48}
+                width={120}
+                style={{ objectFit: 'contain', filter: 'brightness(0) invert(1)' }}
+                priority
+              />
               <div className="navbar-brand-text">
                 <span className="navbar-brand-name">Sanagustin Náutica</span>
                 <span className="navbar-brand-tag">Distribuidores Oficiales</span>

@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Navbar from '@/components/Navbar'
+import HeroBackground from '@/components/HeroBackground'
 import PanelsSection from '@/components/PanelsSection'
 import MercuryCatalog from '@/components/MercuryCatalog'
 import WhatsAppContact from '@/components/WhatsAppContact'
@@ -14,6 +15,15 @@ export default function Home() {
       <main>
         {/* Hero band */}
         <section id="inicio" className="hero-band">
+          <HeroBackground />
+          <div className="hero-band-overlay" />
+          {/* Olas animadas inferiores */}
+          <div className="hero-waves" aria-hidden="true">
+            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+              <path className="hero-wave-1" d="M0,64 C240,96 480,32 720,48 C960,64 1200,112 1440,72 L1440,120 L0,120 Z" />
+              <path className="hero-wave-2" d="M0,80 C240,48 480,104 720,88 C960,72 1200,32 1440,64 L1440,120 L0,120 Z" />
+            </svg>
+          </div>
           <div className="container">
             <div className="hero-band-inner">
               <div className="hero-band-tag">Distribuidor Oficial Mercury · Santa Fe</div>

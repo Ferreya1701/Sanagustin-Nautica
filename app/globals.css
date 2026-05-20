@@ -251,23 +251,70 @@ input, textarea, select { font-family: inherit; }
    HERO BANNER (encima de los paneles)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .hero-band {
-  padding: 7rem 0 3.5rem;
-  background: linear-gradient(180deg, var(--navy) 0%, var(--mid) 100%);
+  padding: 8rem 0 5.5rem;
+  background: linear-gradient(135deg, #011721 0%, #07283b 50%, #0a1e2e 100%);
+  background-size: 200% 200%;
+  animation: hero-gradient 18s ease infinite;
   text-align: center;
   position: relative;
   overflow: hidden;
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+}
+@keyframes hero-gradient {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 .hero-band::before {
   content: '';
   position: absolute;
   inset: 0;
+  z-index: 1;
   background-image:
     linear-gradient(rgba(15,67,99,0.12) 1px, transparent 1px),
     linear-gradient(90deg, rgba(15,67,99,0.12) 1px, transparent 1px);
   background-size: 60px 60px;
-  opacity: 0.5;
+  opacity: 0.45;
 }
-.hero-band-inner { position: relative; z-index: 1; }
+/* Fondo media (video / imagen) */
+.hero-bg-media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.hero-band-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(1,23,33,0.55) 0%,
+    rgba(1,23,33,0.45) 45%,
+    rgba(1,23,33,0.85) 100%
+  );
+}
+/* Olas animadas inferiores */
+.hero-waves {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+  line-height: 0;
+}
+.hero-waves svg { width: 100%; height: 110px; display: block; }
+.hero-wave-1 { fill: rgba(15,67,99,0.5); animation: wave-shift 9s ease-in-out infinite; }
+.hero-wave-2 { fill: var(--mid); animation: wave-shift 7s ease-in-out infinite reverse; }
+@keyframes wave-shift {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(-24px); }
+}
+.hero-band .container { position: relative; z-index: 3; width: 100%; }
+.hero-band-inner { position: relative; z-index: 3; }
 .hero-band-tag {
   display: inline-flex;
   align-items: center;

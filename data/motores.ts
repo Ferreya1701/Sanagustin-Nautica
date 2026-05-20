@@ -90,6 +90,34 @@ export const modelos: Modelo[] = [
 
 export const filtros: ('Todos' | Familia)[] = ['Todos', 'FourStroke', 'Pro XS', 'Verado', 'SeaPro']
 
+/** Rangos de potencia para el filtro avanzado */
+export const rangosHp = [
+  { id: 'todos', label: 'Toda potencia', min: 0, max: Infinity },
+  { id: 'r1', label: 'Hasta 20 HP', min: 0, max: 20 },
+  { id: 'r2', label: '25 a 60 HP', min: 21, max: 60 },
+  { id: 'r3', label: '75 a 150 HP', min: 61, max: 150 },
+  { id: 'r4', label: '175 HP o más', min: 151, max: Infinity },
+] as const
+
+export const usos = ['Todos', 'Pesca', 'Deportivo', 'Recreativo', 'Crucero', 'Comercial'] as const
+
+/** Usos recomendados de cada modelo (derivado de familia + potencia) */
+export function usosDe(m: Modelo): string[] {
+  if (m.fam === 'SeaPro') return ['Comercial', 'Recreativo']
+  if (m.fam === 'Pro XS') return ['Pesca', 'Deportivo']
+  if (m.fam === 'Verado') return ['Crucero', 'Deportivo']
+  const hp = parseFloat(m.hp)
+  if (hp <= 20) return ['Pesca', 'Recreativo']
+  if (hp <= 90) return ['Pesca', 'Recreativo', 'Deportivo']
+  return ['Deportivo', 'Crucero']
+}
+
+export function enRangoHp(m: Modelo, rangoId: string): boolean {
+  const r = rangosHp.find((x) => x.id === rangoId) ?? rangosHp[0]
+  const hp = parseFloat(m.hp)
+  return hp >= r.min && hp <= r.max
+}
+
 function tierUso(hp: number): string {
   if (hp <= 6) return 'Ideal para botes, gomones pequeños y como motor auxiliar. Liviano y fácil de transportar.'
   if (hp <= 20) return 'Perfecto para gomones, botes de pesca y embarcaciones livianas de uso recreativo.'

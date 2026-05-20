@@ -66,8 +66,30 @@ input, textarea, select { font-family: inherit; }
   .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
 }
 
+/* ── Scroll progress bar ───────────────────────────── */
+.scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  width: 100%;
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  background: linear-gradient(90deg, var(--petrol), var(--lavender));
+  z-index: 1100;
+  will-change: transform;
+}
+
+/* ── Foco accesible global ─────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--lavender);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
 /* ── Buttons ───────────────────────────────────────── */
 .btn {
+  position: relative;
+  overflow: hidden;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -82,6 +104,20 @@ input, textarea, select { font-family: inherit; }
   cursor: pointer;
   white-space: nowrap;
 }
+/* Brillo deslizante en hover */
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.35), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+  pointer-events: none;
+}
+.btn:hover::before { left: 140%; }
 .btn-primary {
   background: var(--petrol);
   color: var(--white);
@@ -186,6 +222,7 @@ input, textarea, select { font-family: inherit; }
   list-style: none;
 }
 .navbar-nav a {
+  position: relative;
   font-family: var(--font-heading);
   font-size: 0.82rem;
   font-weight: 500;
@@ -194,12 +231,23 @@ input, textarea, select { font-family: inherit; }
   color: rgba(244,246,251,0.72);
   padding: 0.45rem 0.8rem;
   border-radius: var(--radius);
-  transition: all 0.2s ease;
+  transition: color 0.2s ease;
 }
-.navbar-nav a:hover {
-  color: var(--lavender);
-  background: rgba(200,205,237,0.08);
+.navbar-nav li:not(:last-child) a::after {
+  content: '';
+  position: absolute;
+  left: 0.8rem;
+  right: 0.8rem;
+  bottom: 0.2rem;
+  height: 2px;
+  background: var(--lavender);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
 }
+.navbar-nav li:not(:last-child) a:hover { color: var(--lavender); }
+.navbar-nav li:not(:last-child) a:hover::after { transform: scaleX(1); }
 .navbar-cta {
   padding: 0.55rem 1.4rem !important;
   background: var(--petrol) !important;
@@ -934,10 +982,10 @@ input, textarea, select { font-family: inherit; }
   display: flex;
   flex-direction: column;
   cursor: pointer;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  transform-style: preserve-3d;
+  transition: transform 0.18s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 .motor-card-v2:hover {
-  transform: translateY(-6px);
   box-shadow: var(--shadow-hover);
   border-color: rgba(200,205,237,0.3);
 }
@@ -1614,6 +1662,7 @@ input, textarea, select { font-family: inherit; }
   box-shadow: 0 10px 32px rgba(37,211,102,0.55), 0 0 0 1px rgba(255,255,255,0.15) inset;
 }
 .whatsapp-icon-wrap {
+  position: relative;
   width: 32px; height: 32px;
   background: rgba(255,255,255,0.15);
   border-radius: 50%;
@@ -1622,6 +1671,23 @@ input, textarea, select { font-family: inherit; }
   justify-content: center;
   flex-shrink: 0;
   border: 1px solid rgba(255,255,255,0.2);
+}
+.whatsapp-icon-wrap::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.5);
+  animation: wa-pulse 2.4s ease-out infinite;
+  pointer-events: none;
+}
+@keyframes wa-pulse {
+  0%   { transform: scale(0.85); opacity: 0.7; }
+  70%  { transform: scale(1.5);  opacity: 0; }
+  100% { transform: scale(1.5);  opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .whatsapp-icon-wrap::after { animation: none; }
 }
 .whatsapp-icon-wrap svg {
   width: 20px; height: 20px;

@@ -134,6 +134,14 @@ export default function MercuryCatalog() {
                   role="button"
                   tabIndex={0}
                   onKeyDown={(e) => e.key === 'Enter' && setSel(m)}
+                  onMouseMove={(e) => {
+                    const el = e.currentTarget
+                    const r = el.getBoundingClientRect()
+                    const px = (e.clientX - r.left) / r.width - 0.5
+                    const py = (e.clientY - r.top) / r.height - 0.5
+                    el.style.transform = `perspective(800px) rotateX(${(-py * 5).toFixed(2)}deg) rotateY(${(px * 5).toFixed(2)}deg) translateY(-6px)`
+                  }}
+                  onMouseLeave={(e) => { e.currentTarget.style.transform = '' }}
                 >
                   <div className="motor-card-img">
                     <ProductImage sources={imgSources(m)} alt={`Mercury ${m.hp} HP ${familiaInfo[m.fam].etiqueta}`} size={38} />

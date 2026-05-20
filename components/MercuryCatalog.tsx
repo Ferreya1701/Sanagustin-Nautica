@@ -101,8 +101,15 @@ function descripcion(m: Modelo): string {
   return `${familiaInfo[m.fam].base} ${tierUso(parseFloat(m.hp))}`
 }
 
-function slug(m: Modelo): string {
-  return `${m.fam.replace(/\s+/g, '').toLowerCase()}-${m.hp.replace('.', '-')}`
+function famSlug(m: Modelo): string {
+  return m.fam.replace(/\s+/g, '').toLowerCase()
+}
+function modelSlug(m: Modelo): string {
+  return `${famSlug(m)}-${m.hp.replace('.', '-')}`
+}
+function imgSources(m: Modelo): string[] {
+  // 1) foto del modelo  2) foto de la familia
+  return [modelSlug(m), famSlug(m)]
 }
 
 function waLink(phone: string, m: Modelo): string {
@@ -168,7 +175,7 @@ export default function MercuryCatalog() {
               onKeyDown={(e) => e.key === 'Enter' && setSel(m)}
             >
               <div className="motor-card-img">
-                <ProductImage slug={slug(m)} alt={`Mercury ${m.hp} HP ${familiaInfo[m.fam].etiqueta}`} size={38} />
+                <ProductImage sources={imgSources(m)} alt={`Mercury ${m.hp} HP ${familiaInfo[m.fam].etiqueta}`} size={38} />
                 <span className={`motor-fam-badge fam-${m.fam.replace(/\s+/g, '').toLowerCase()}`}>
                   {familiaInfo[m.fam].etiqueta}
                 </span>
@@ -191,7 +198,7 @@ export default function MercuryCatalog() {
             <button className="motor-modal-close" onClick={() => setSel(null)} aria-label="Cerrar">×</button>
 
             <div className="motor-modal-img">
-              <ProductImage slug={slug(sel)} alt={`Mercury ${sel.hp} HP ${familiaInfo[sel.fam].etiqueta}`} size={72} />
+              <ProductImage sources={imgSources(sel)} alt={`Mercury ${sel.hp} HP ${familiaInfo[sel.fam].etiqueta}`} size={72} />
             </div>
 
             <div className="motor-modal-body">

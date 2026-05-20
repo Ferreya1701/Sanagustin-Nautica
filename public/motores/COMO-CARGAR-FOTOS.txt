@@ -1,41 +1,33 @@
 CÓMO CARGAR LAS FOTOS DE LOS MOTORES MERCURY
 =============================================
 
-Dejá cada foto en ESTA carpeta (public/motores/) en formato PNG,
-con el nombre exacto según el modelo. Aparecen solas en la web.
+El sistema prueba 2 fuentes por cada motor:
+  1) Foto específica del modelo   ->  ej: fourstroke-150.png
+  2) Foto de la familia           ->  ej: fourstroke.png
+Si no hay ninguna, muestra un placeholder de marca.
 
-Formato del nombre:   {familia}-{hp}.png
-  - familia en minúscula y sin espacios: fourstroke, proxs, verado, seapro
-  - el punto del HP se reemplaza por guion (2.5 -> 2-5 ; 9.9 -> 9-9)
+>>> ATAJO RÁPIDO <<<
+Con SOLO 4 fotos (una por familia) ya se ve TODO el catálogo completo:
 
-EJEMPLOS:
-  fourstroke-2-5.png      (Mercury 2.5 HP FourStroke)
-  fourstroke-150.png      (Mercury 150 HP FourStroke)
-  proxs-300.png           (Mercury 300 HP Pro XS)
-  verado-600.png          (Mercury 600 HP Verado)
-  seapro-500.png          (Mercury 500 HP SeaPro)
+  fourstroke.png   (cubre los 23 modelos FourStroke)
+  proxs.png        (cubre los 7 modelos Pro XS)
+  verado.png       (cubre los 5 modelos Verado)
+  seapro.png       (cubre los 13 modelos SeaPro)
 
-LISTA COMPLETA DE ARCHIVOS:
+Después podés ir sumando fotos por modelo para más precisión (opcional).
 
-FourStroke:
-  fourstroke-2-5.png  fourstroke-3-5.png  fourstroke-4.png  fourstroke-5.png
-  fourstroke-6.png    fourstroke-8.png    fourstroke-9-9.png  fourstroke-15.png
-  fourstroke-20.png   fourstroke-25.png   fourstroke-30.png   fourstroke-40.png
-  fourstroke-50.png   fourstroke-60.png   fourstroke-75.png   fourstroke-90.png
-  fourstroke-115.png  fourstroke-150.png  fourstroke-175.png  fourstroke-200.png
-  fourstroke-225.png  fourstroke-250.png  fourstroke-300.png
+-----------------------------------------------------------------
+FOTOS POR MODELO (opcional, para máxima precisión)
+Formato:  {familia}-{hp}.png   (el punto del HP se reemplaza por guion)
 
-Pro XS:
-  proxs-115.png  proxs-150.png  proxs-175.png  proxs-200.png
-  proxs-225.png  proxs-250.png  proxs-300.png
+FourStroke: fourstroke-2-5 / 3-5 / 4 / 5 / 6 / 8 / 9-9 / 15 / 20 / 25 /
+  30 / 40 / 50 / 60 / 75 / 90 / 115 / 150 / 175 / 200 / 225 / 250 / 300
+Pro XS:     proxs-115 / 150 / 175 / 200 / 225 / 250 / 300
+Verado:     verado-250 / 300 / 350 / 400 / 600
+SeaPro:     seapro-15 / 25 / 40 / 60 / 75 / 90 / 115 / 150 / 200 / 225 / 250 / 300 / 500
 
-Verado:
-  verado-250.png  verado-300.png  verado-350.png  verado-400.png  verado-600.png
+(todos terminan en .png — ej: fourstroke-150.png)
 
-SeaPro:
-  seapro-15.png   seapro-25.png   seapro-40.png   seapro-60.png   seapro-75.png
-  seapro-90.png   seapro-115.png  seapro-150.png  seapro-200.png  seapro-225.png
-  seapro-250.png  seapro-300.png  seapro-500.png
-
-NOTA: Recomendado fondo transparente o blanco, mínimo 800x800 px.
-Mientras no haya foto, se muestra un placeholder de marca automáticamente.
+-----------------------------------------------------------------
+RECOMENDADO: fondo transparente o blanco, mínimo 800x800 px.
+Dejá los archivos en esta carpeta (public/motores/) y aparecen solos.

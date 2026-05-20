@@ -1,4 +1,5 @@
 import Icon from './Icon'
+import Reveal from './Reveal'
 import { site, waLink } from '@/data/site'
 
 const msgGeneral = 'Hola! Vi la web de Sanagustin Náutica y quisiera recibir asesoramiento. ¿Pueden ayudarme?'
@@ -16,7 +17,7 @@ export default function WhatsAppContact() {
     <section id="contacto" className="contacto-section">
       <div className="container">
         <div className="contacto-grid">
-          <div className="contacto-info">
+          <Reveal className="contacto-info" variant="left">
             <span className="section-label">Contacto</span>
             <h2>¿Te <em>asesoramos?</em></h2>
             <p className="contacto-lead">
@@ -38,9 +39,9 @@ export default function WhatsAppContact() {
                 <span>{site.email}</span>
               </div>
             </div>
-          </div>
+          </Reveal>
 
-          <div className="contacto-asesores">
+          <Reveal className="contacto-asesores" variant="right" delay={2}>
             {site.asesores.map((a) => (
               <a
                 key={a.nombre}
@@ -57,7 +58,7 @@ export default function WhatsAppContact() {
                 <span className="asesor-cta">Escribir →</span>
               </a>
             ))}
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

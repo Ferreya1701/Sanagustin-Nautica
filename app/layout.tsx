@@ -1,8 +1,16 @@
 import type { Metadata } from 'next'
+import { Raleway, Oswald, Nunito_Sans, Roboto_Mono } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import './globals.css'
 import { site } from '@/data/site'
 
 const SITE_URL = site.url
+
+const raleway = Raleway({ subsets: ['latin'], weight: ['700', '800', '900'], variable: '--font-raleway', display: 'swap' })
+const oswald = Oswald({ subsets: ['latin'], weight: ['400', '500', '600', '700'], variable: '--font-oswald', display: 'swap' })
+const nunito = Nunito_Sans({ subsets: ['latin'], weight: ['400', '600', '700'], variable: '--font-nunito', display: 'swap' })
+const robotoMono = Roboto_Mono({ subsets: ['latin'], weight: ['400', '500'], variable: '--font-roboto-mono', display: 'swap' })
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -68,23 +76,23 @@ const jsonLd = {
   sameAs: [site.social.instagram, site.social.facebook].filter(Boolean),
 }
 
+const fontVars = `${raleway.variable} ${oswald.variable} ${nunito.variable} ${robotoMono.variable}`
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" suppressHydrationWarning>
+    <html lang="es" className={fontVars} suppressHydrationWarning>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Raleway:wght@700;800;900&family=Oswald:wght@400;500;600;700&family=Nunito+Sans:wght@400;600;700&family=Roboto+Mono:wght@400;500&display=swap"
-          rel="stylesheet"
-        />
         <meta name="theme-color" content="#011721" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+        <SpeedInsights />
+      </body>
     </html>
   )
 }

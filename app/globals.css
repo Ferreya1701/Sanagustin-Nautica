@@ -13,10 +13,10 @@
   --mid:      #0a1e2e;
   --surface:  #0f2d42;
 
-  --font-brand:   'Raleway', sans-serif;
-  --font-heading: 'Oswald', sans-serif;
-  --font-body:    'Nunito Sans', sans-serif;
-  --font-mono:    'Roboto Mono', monospace;
+  --font-brand:   var(--font-raleway), sans-serif;
+  --font-heading: var(--font-oswald), sans-serif;
+  --font-body:    var(--font-nunito), sans-serif;
+  --font-mono:    var(--font-roboto-mono), monospace;
 
   --shadow:       0 8px 32px rgba(0,0,0,0.55), 0 0 0 1px rgba(15,67,99,0.25);
   --shadow-hover: 0 24px 64px rgba(0,0,0,0.7), 0 0 0 1px rgba(200,205,237,0.2);
@@ -43,12 +43,28 @@ input, textarea, select { font-family: inherit; }
 .reveal {
   opacity: 0;
   transform: translateY(36px);
-  transition: opacity 0.75s ease, transform 0.75s ease;
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
 }
-.reveal.visible { opacity: 1; transform: translateY(0); }
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal.visible { opacity: 1; transform: translateY(0) translateX(0) scale(1); }
+
+/* Variantes direccionales */
+.reveal-up    { transform: translateY(36px); }
+.reveal-left  { transform: translateX(-44px); }
+.reveal-right { transform: translateX(44px); }
+.reveal-zoom  { transform: scale(0.92); }
+
+/* Delays para efecto stagger */
+.reveal-delay-1 { transition-delay: 0.08s; }
+.reveal-delay-2 { transition-delay: 0.16s; }
+.reveal-delay-3 { transition-delay: 0.24s; }
+.reveal-delay-4 { transition-delay: 0.32s; }
+.reveal-delay-5 { transition-delay: 0.40s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
 
 /* ── Buttons ───────────────────────────────────────── */
 .btn {
@@ -654,6 +670,8 @@ input, textarea, select { font-family: inherit; }
   grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
   gap: 1.1rem;
 }
+.catalog-cell { display: flex; }
+.catalog-cell > .motor-card-v2 { width: 100%; }
 .motor-card-v2 {
   background: var(--surface);
   border: 1px solid rgba(15,67,99,0.4);

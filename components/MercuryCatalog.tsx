@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react'
 import ProductImage from './ProductImage'
+import Reveal from './Reveal'
 import { site, waLink } from '@/data/site'
 import {
   type Familia,
@@ -36,11 +37,11 @@ export default function MercuryCatalog() {
   return (
     <section id="motores" className="catalog-section">
       <div className="container">
-        <div className="catalog-header">
+        <Reveal as="div" className="catalog-header">
           <span className="section-label">Motores Fuera de Borda</span>
           <h2>Catálogo <em>Mercury</em></h2>
           <p>Distribuidores oficiales. Toda la gama Mercury, desde 2.5 HP hasta 600 HP. Tocá cada motor para ver el detalle y consultar precio.</p>
-        </div>
+        </Reveal>
 
         <div className="catalog-filters">
           {filtros.map((f) => {
@@ -62,8 +63,13 @@ export default function MercuryCatalog() {
 
         <div className="catalog-grid">
           {visibles.map((m, i) => (
-            <div
+            <Reveal
               key={`${m.fam}-${m.hp}-${i}`}
+              variant="up"
+              delay={(((i % 4) + 1) as 1 | 2 | 3 | 4)}
+              className="catalog-cell"
+            >
+            <div
               className="motor-card-v2"
               onClick={() => setSel(m)}
               role="button"
@@ -83,6 +89,7 @@ export default function MercuryCatalog() {
                 <span className="motor-vermas">Ver detalle →</span>
               </div>
             </div>
+            </Reveal>
           ))}
         </div>
       </div>

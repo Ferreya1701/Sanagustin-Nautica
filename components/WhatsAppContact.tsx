@@ -1,14 +1,7 @@
-import React from 'react'
 import Icon from './Icon'
-
-const SERGIO  = '543426487636'
-const EMANUEL = '543425111428'
+import { site, waLink } from '@/data/site'
 
 const msgGeneral = 'Hola! Vi la web de Sanagustin Náutica y quisiera recibir asesoramiento. ¿Pueden ayudarme?'
-
-function waLink(phone: string) {
-  return `https://wa.me/${phone}?text=${encodeURIComponent(msgGeneral)}`
-}
 
 function WaIcon() {
   return (
@@ -23,7 +16,6 @@ export default function WhatsAppContact() {
     <section id="contacto" className="contacto-section">
       <div className="container">
         <div className="contacto-grid">
-          {/* Info */}
           <div className="contacto-info">
             <span className="section-label">Contacto</span>
             <h2>¿Te <em>asesoramos?</em></h2>
@@ -35,38 +27,36 @@ export default function WhatsAppContact() {
             <div className="contacto-datos">
               <div className="contacto-dato">
                 <Icon name="pin" size={20} />
-                <span>Av. Aristobulo 9534</span>
+                <span>{site.direccion}</span>
               </div>
               <div className="contacto-dato">
                 <Icon name="clock" size={20} />
-                <span>Lunes a Viernes · 9:00 a 12:30 hs</span>
+                <span>{site.horario}</span>
               </div>
               <div className="contacto-dato">
                 <Icon name="mail" size={20} />
-                <span>sanagustinnautica@gmail.com</span>
+                <span>{site.email}</span>
               </div>
             </div>
           </div>
 
-          {/* Asesores WhatsApp */}
           <div className="contacto-asesores">
-            <a href={waLink(SERGIO)} target="_blank" rel="noopener noreferrer" className="asesor-card">
-              <span className="asesor-wa"><WaIcon /></span>
-              <span className="asesor-info">
-                <span className="asesor-nombre">Sergio</span>
-                <span className="asesor-num">+54 342 648-7636</span>
-              </span>
-              <span className="asesor-cta">Escribir →</span>
-            </a>
-
-            <a href={waLink(EMANUEL)} target="_blank" rel="noopener noreferrer" className="asesor-card">
-              <span className="asesor-wa"><WaIcon /></span>
-              <span className="asesor-info">
-                <span className="asesor-nombre">Emanuel</span>
-                <span className="asesor-num">+54 342 511-1428</span>
-              </span>
-              <span className="asesor-cta">Escribir →</span>
-            </a>
+            {site.asesores.map((a) => (
+              <a
+                key={a.nombre}
+                href={waLink(a.telefono, msgGeneral)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="asesor-card"
+              >
+                <span className="asesor-wa"><WaIcon /></span>
+                <span className="asesor-info">
+                  <span className="asesor-nombre">{a.nombre}</span>
+                  <span className="asesor-num">{a.display}</span>
+                </span>
+                <span className="asesor-cta">Escribir →</span>
+              </a>
+            ))}
           </div>
         </div>
       </div>

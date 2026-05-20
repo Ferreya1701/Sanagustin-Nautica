@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import { site } from '@/data/site'
 
-const SITE_URL = 'https://sanagustin-nautica.vercel.app'
+const SITE_URL = site.url
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -40,31 +41,31 @@ export const metadata: Metadata = {
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Store',
-  name: 'Sanagustin Náutica',
+  name: site.nombre,
   description:
     'Distribuidor oficial de motores fuera de borda Mercury. Cascos, accesorios, usados seleccionados y atención personalizada.',
   url: SITE_URL,
   image: `${SITE_URL}/opengraph-image.png`,
-  telephone: '+543426487636',
-  email: 'sanagustinnautica@gmail.com',
+  telephone: `+${site.asesores[0].telefono}`,
+  email: site.email,
   priceRange: '$$',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Av. Aristobulo 9534',
-    addressLocality: 'Santa Fe',
-    addressRegion: 'Santa Fe',
-    addressCountry: 'AR',
+    streetAddress: site.direccion,
+    addressLocality: site.ciudad,
+    addressRegion: site.provincia,
+    addressCountry: site.pais,
   },
   openingHoursSpecification: [
     {
       '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-      opens: '09:00',
-      closes: '12:30',
+      dayOfWeek: site.horarioSchema.dias,
+      opens: site.horarioSchema.abre,
+      closes: site.horarioSchema.cierra,
     },
   ],
   brand: { '@type': 'Brand', name: 'Mercury Marine' },
-  sameAs: [] as string[],
+  sameAs: [site.social.instagram, site.social.facebook].filter(Boolean),
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

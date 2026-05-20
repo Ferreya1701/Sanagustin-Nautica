@@ -431,9 +431,16 @@ input, textarea, select { font-family: inherit; }
 }
 
 .panel-content-icon {
-  font-size: 2.2rem;
-  margin-bottom: 0.75rem;
-  display: block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  margin-bottom: 1rem;
+  color: var(--lavender);
+  background: rgba(200, 205, 237, 0.08);
+  border: 1px solid rgba(200, 205, 237, 0.25);
+  border-radius: 14px;
 }
 
 .panel-content-title {
@@ -526,6 +533,7 @@ input, textarea, select { font-family: inherit; }
   font-size: 1.1rem;
   opacity: 0.8;
 }
+.data-strip-item svg { color: var(--lavender); flex-shrink: 0; }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    CONTACT SECTION
@@ -710,9 +718,16 @@ input, textarea, select { font-family: inherit; }
 }
 
 .wa-card-icon {
-  font-size: 2rem;
-  line-height: 1;
-  margin-bottom: 0.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  margin-bottom: 0.5rem;
+  color: var(--lavender);
+  background: rgba(200, 205, 237, 0.08);
+  border: 1px solid rgba(200, 205, 237, 0.22);
+  border-radius: 13px;
 }
 
 .wa-card-title {
@@ -813,6 +828,7 @@ input, textarea, select { font-family: inherit; }
   font-weight: 500;
   letter-spacing: 0.04em;
 }
+.wa-info-item svg { color: var(--lavender); flex-shrink: 0; }
 
 .wa-info-divider {
   width: 1px;

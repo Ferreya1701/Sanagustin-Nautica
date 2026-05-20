@@ -1,5 +1,6 @@
 'use client'
 import { useState, useEffect, useRef } from 'react'
+import Icon from './Icon'
 
 const panels = [
   {
@@ -7,11 +8,10 @@ const panels = [
     label: 'Aceites &\nAccesorios',
     labelShort: 'Aceites & Accesorios',
     number: '01',
-    icon: '🔧',
+    icon: 'accesorio' as const,
     description:
       'Aceites marinos de primera línea, repuestos originales, equipamiento de seguridad y todo lo que necesitás para mantener tu embarcación en óptimas condiciones.',
-    cta: 'Ver Accesorios',
-    href: '#accesorios',
+    cta: 'Consultar',
     bg: 'linear-gradient(160deg, #0f3a5c 0%, #011721 100%)',
     accent: '#c8cded',
   },
@@ -20,11 +20,10 @@ const panels = [
     label: 'Motores\nFuera de Borda',
     labelShort: 'Motores F/B',
     number: '02',
-    icon: '⚡',
+    icon: 'motor' as const,
     description:
       'Distribuidores oficiales de las mejores marcas. Motores de 2,5 HP hasta 350 HP para toda aplicación: pesca, deportivo, recreativo y trabajo.',
-    cta: 'Ver Motores',
-    href: '#motores',
+    cta: 'Consultar',
     bg: 'linear-gradient(160deg, #0a1e2e 0%, #0f4363 100%)',
     accent: '#c8cded',
   },
@@ -33,11 +32,10 @@ const panels = [
     label: 'Cascos',
     labelShort: 'Cascos',
     number: '03',
-    icon: '🚤',
+    icon: 'casco' as const,
     description:
       'Amplio stock de embarcaciones: runabouts, semi-rígidos, lanchas de pesca y más. Modelos para cada actividad y presupuesto.',
-    cta: 'Ver Cascos',
-    href: '#cascos',
+    cta: 'Consultar',
     bg: 'linear-gradient(160deg, #061a27 0%, #0f4363 100%)',
     accent: '#c8cded',
   },
@@ -46,11 +44,10 @@ const panels = [
     label: 'Usados\nSeleccionados',
     labelShort: 'Usados',
     number: '04',
-    icon: '✅',
+    icon: 'usado' as const,
     description:
       'Embarcaciones y motores usados con inspección técnica completa. Todos los usados tienen garantía de calidad Sanagustin Náutica.',
-    cta: 'Ver Usados',
-    href: '#usados',
+    cta: 'Consultar',
     bg: 'linear-gradient(160deg, #0f2d42 0%, #011721 100%)',
     accent: '#c8cded',
   },
@@ -59,11 +56,10 @@ const panels = [
     label: 'Atención\nPersonalizada',
     labelShort: 'Atención',
     number: '05',
-    icon: '🤝',
+    icon: 'atencion' as const,
     description:
       'Asesoramiento especializado para encontrar la combinación perfecta de motor y embarcación. Financiación, patentamiento y soporte técnico.',
     cta: 'Contactarnos',
-    href: '#contacto',
     bg: 'linear-gradient(160deg, #1d1d1b 0%, #0f4363 100%)',
     accent: '#c8cded',
   },
@@ -83,9 +79,19 @@ export default function PanelsSection() {
     return () => obs.disconnect()
   }, [])
 
-  const handleClick = (href: string) => {
-    const target = document.querySelector(href)
-    if (target) target.scrollIntoView({ behavior: 'smooth' })
+  // Activación de panel desde el navbar
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const id = (e as CustomEvent<string>).detail
+      const idx = panels.findIndex((p) => p.id === id)
+      if (idx >= 0) setActive(idx)
+    }
+    window.addEventListener('sann:activate-panel', handler)
+    return () => window.removeEventListener('sann:activate-panel', handler)
+  }, [])
+
+  const goToContacto = () => {
+    document.querySelector('#contacto')?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
@@ -120,7 +126,9 @@ export default function PanelsSection() {
 
             {/* Expanded content */}
             <div className="panel-content">
-              <span className="panel-content-icon">{p.icon}</span>
+              <span className="panel-content-icon">
+                <Icon name={p.icon} size={36} />
+              </span>
               <h2 className="panel-content-title">
                 <span>{p.number} — Categoría</span>
                 {p.label.split('\n').map((line, idx) => (
@@ -135,7 +143,7 @@ export default function PanelsSection() {
                 className="btn btn-outline"
                 onClick={(e) => {
                   e.stopPropagation()
-                  handleClick(p.href)
+                  goToContacto()
                 }}
               >
                 {p.cta} →

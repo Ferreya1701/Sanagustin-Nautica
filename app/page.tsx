@@ -2,6 +2,7 @@ import Navbar from '@/components/Navbar'
 import PanelsSection from '@/components/PanelsSection'
 import WhatsAppContact from '@/components/WhatsAppContact'
 import WhatsApp from '@/components/WhatsApp'
+import Icon from '@/components/Icon'
 
 export default function Home() {
   return (
@@ -34,19 +35,19 @@ export default function Home() {
           <div className="container">
             <div className="data-strip-inner">
               <div className="data-strip-item">
-                <span className="icon">📍</span>
+                <Icon name="pin" size={18} />
                 Av. Aristobulo 9534
               </div>
               <div className="data-strip-item">
-                <span className="icon">🕐</span>
+                <Icon name="clock" size={18} />
                 Lun–Vie: 9:00 a 12:30
               </div>
               <div className="data-strip-item">
-                <span className="icon">📧</span>
+                <Icon name="mail" size={18} />
                 sanagustinnautica@gmail.com
               </div>
               <div className="data-strip-item">
-                <span className="icon">📱</span>
+                <Icon name="phone" size={18} />
                 +54 342 648-7636
               </div>
             </div>

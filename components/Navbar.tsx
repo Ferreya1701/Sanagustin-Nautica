@@ -3,11 +3,11 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 
 const navLinks = [
-  { label: 'Motores', href: '#motores' },
-  { label: 'Cascos', href: '#cascos' },
-  { label: 'Accesorios', href: '#accesorios' },
-  { label: 'Usados', href: '#usados' },
-  { label: 'Nosotros', href: '#atencion' },
+  { label: 'Motores', panel: 'motores' },
+  { label: 'Cascos', panel: 'cascos' },
+  { label: 'Accesorios', panel: 'accesorios' },
+  { label: 'Usados', panel: 'usados' },
+  { label: 'Nosotros', panel: 'atencion' },
 ]
 
 export default function Navbar() {
@@ -20,10 +20,17 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  // Scroll a una sección por id (#inicio, #contacto, #categorias)
   const handleLink = (href: string) => {
     setMenuOpen(false)
-    const el = document.querySelector(href)
-    el?.scrollIntoView({ behavior: 'smooth' })
+    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  // Activa el panel correspondiente y baja a la sección de categorías
+  const handlePanel = (panel: string) => {
+    setMenuOpen(false)
+    window.dispatchEvent(new CustomEvent('sann:activate-panel', { detail: panel }))
+    document.querySelector('#categorias')?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
@@ -50,8 +57,8 @@ export default function Navbar() {
             {/* Desktop nav */}
             <ul className="navbar-nav">
               {navLinks.map((l) => (
-                <li key={l.href}>
-                  <a href={l.href} onClick={(e) => { e.preventDefault(); handleLink(l.href) }}>
+                <li key={l.panel}>
+                  <a href="#categorias" onClick={(e) => { e.preventDefault(); handlePanel(l.panel) }}>
                     {l.label}
                   </a>
                 </li>
@@ -84,9 +91,9 @@ export default function Navbar() {
         <button className="mobile-close" onClick={() => setMenuOpen(false)}>✕</button>
         {navLinks.map((l) => (
           <a
-            key={l.href}
-            href={l.href}
-            onClick={(e) => { e.preventDefault(); handleLink(l.href) }}
+            key={l.panel}
+            href="#categorias"
+            onClick={(e) => { e.preventDefault(); handlePanel(l.panel) }}
           >
             {l.label}
           </a>

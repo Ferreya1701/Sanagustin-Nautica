@@ -1,4 +1,5 @@
 import React from 'react'
+import Icon from './Icon'
 
 const SERGIO  = '543426487636'
 const EMANUEL = '543425111428'
@@ -6,35 +7,35 @@ const EMANUEL = '543425111428'
 const categorias = [
   {
     id: 'motores',
-    icon: '⚡',
+    icon: 'motor' as const,
     titulo: 'Motores Fuera de Borda',
     descripcion: 'Consultá disponibilidad, precios y financiación de motores nuevos.',
     mensaje: 'Hola! Vi la web de Sanagustin Náutica y quisiera consultar sobre *Motores Fuera de Borda*. ¿Me pueden asesorar?',
   },
   {
     id: 'cascos',
-    icon: '🚤',
+    icon: 'casco' as const,
     titulo: 'Cascos & Embarcaciones',
     descripcion: 'Encontrá la embarcación ideal para tu actividad y presupuesto.',
     mensaje: 'Hola! Vi la web de Sanagustin Náutica y quisiera consultar sobre *Cascos y Embarcaciones*. ¿Me pueden asesorar?',
   },
   {
     id: 'accesorios',
-    icon: '🔧',
+    icon: 'accesorio' as const,
     titulo: 'Aceites & Accesorios',
     descripcion: 'Aceites marinos, repuestos y equipamiento de primera línea.',
     mensaje: 'Hola! Vi la web de Sanagustin Náutica y quisiera consultar sobre *Aceites y Accesorios*. ¿Me pueden asesorar?',
   },
   {
     id: 'usados',
-    icon: '✅',
+    icon: 'usado' as const,
     titulo: 'Usados Seleccionados',
     descripcion: 'Motores y embarcaciones usados con inspección técnica garantizada.',
     mensaje: 'Hola! Vi la web de Sanagustin Náutica y quisiera consultar sobre *Usados Seleccionados*. ¿Me pueden asesorar?',
   },
   {
     id: 'atencion',
-    icon: '🤝',
+    icon: 'atencion' as const,
     titulo: 'Atención Personalizada',
     descripcion: 'Necesito asesoramiento para elegir el equipo ideal para mi uso.',
     mensaje: 'Hola! Vi la web de Sanagustin Náutica y quisiera recibir *asesoramiento personalizado*. ¿Pueden ayudarme?',
@@ -61,7 +62,7 @@ export default function WhatsAppContact() {
         <div className="wa-grid">
           {categorias.map((cat) => (
             <div key={cat.id} className="wa-card">
-              <div className="wa-card-icon">{cat.icon}</div>
+              <div className="wa-card-icon"><Icon name={cat.icon} size={28} /></div>
               <h3 className="wa-card-title">{cat.titulo}</h3>
               <p className="wa-card-desc">{cat.descripcion}</p>
 
@@ -99,17 +100,17 @@ export default function WhatsAppContact() {
         {/* Info strip */}
         <div className="wa-info-strip">
           <div className="wa-info-item">
-            <span>📍</span>
+            <Icon name="pin" size={18} />
             <span>Av. Aristobulo 9534</span>
           </div>
           <div className="wa-info-divider" />
           <div className="wa-info-item">
-            <span>🕐</span>
+            <Icon name="clock" size={18} />
             <span>Lun–Vie: 9:00 a 12:30 hs</span>
           </div>
           <div className="wa-info-divider" />
           <div className="wa-info-item">
-            <span>📧</span>
+            <Icon name="mail" size={18} />
             <span>sanagustinnautica@gmail.com</span>
           </div>
         </div>

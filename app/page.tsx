@@ -9,10 +9,33 @@ import Footer from '@/components/Footer'
 import ScrollProgress from '@/components/ScrollProgress'
 import Icon from '@/components/Icon'
 import { site } from '@/data/site'
+import { modelos, familiaInfo } from '@/data/motores'
+
+const catalogJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Catálogo de motores fuera de borda Mercury',
+  numberOfItems: modelos.length,
+  itemListElement: modelos.map((m, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    item: {
+      '@type': 'Product',
+      name: `Mercury ${m.hp} HP ${familiaInfo[m.fam].etiqueta}`,
+      category: 'Motor fuera de borda',
+      brand: { '@type': 'Brand', name: 'Mercury Marine' },
+    },
+  })),
+}
 
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(catalogJsonLd) }}
+      />
+      <a href="#categorias" className="skip-link">Saltar al contenido</a>
       <ScrollProgress />
       <Navbar />
 

@@ -138,7 +138,24 @@ export function modelSlug(m: Modelo): string {
   return `${famSlug(m)}-${m.hp.replace('.', '-')}`
 }
 
-/** Fuentes de imagen en orden: modelo → familia → (placeholder) */
-export function imgSources(m: Modelo): string[] {
-  return [modelSlug(m), famSlug(m)]
+/**
+ * IMÁGENES YA CARGADas en /public/motores/
+ * ==========================================
+ * Agregá acá el nombre del archivo (SIN .png) cuando subas una foto.
+ * El catálogo solo intenta mostrar imágenes que estén en esta lista
+ * (así no hay errores 404 en la consola por fotos que todavía no existen).
+ *
+ * Podés usar:
+ *   - nombre de familia → cubre todos sus modelos:  'fourstroke', 'proxs', 'verado', 'seapro'
+ *   - nombre de modelo  → solo ese modelo:           'verado-600', 'fourstroke-150'
+ *
+ * Ejemplo cuando tengas las 4 fotos por familia:
+ *   export const imagenesCargadas: string[] = ['fourstroke', 'proxs', 'verado', 'seapro']
+ */
+export const imagenesCargadas: string[] = []
+
+/** Devuelve el mejor slug de imagen disponible para el modelo, o null si no hay ninguna. */
+export function imgSrc(m: Modelo): string | null {
+  const candidatos = [modelSlug(m), famSlug(m)]
+  return candidatos.find((c) => imagenesCargadas.includes(c)) ?? null
 }

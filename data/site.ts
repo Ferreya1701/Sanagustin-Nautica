@@ -39,6 +39,12 @@ export const site = {
   // Consulta de Google Maps (se usa para el embed del mapa).
   // Si tenés la ubicación exacta, reemplazá por las coordenadas o el nombre del negocio en Maps.
   mapaQuery: 'Av. Aristobulo del Valle 9534, Santa Fe',
+
+  // Fondo del hero. Cambialo cuando subas el archivo a /public:
+  //   'none'  → gradiente animado (sin foto/video)
+  //   'video' → usa /public/hero.mp4
+  //   'image' → usa /public/hero.jpg
+  heroMedia: 'none',
 } as const
 
 /** Genera un link de WhatsApp con mensaje pre-armado */

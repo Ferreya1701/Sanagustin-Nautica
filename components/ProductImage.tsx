@@ -3,27 +3,22 @@ import { useState } from 'react'
 import Icon from './Icon'
 
 /**
- * Muestra la foto del motor probando varias fuentes en orden:
- *   1) foto específica del modelo   (ej: fourstroke-150.png)
- *   2) foto de la familia            (ej: fourstroke.png)
- *   3) placeholder de marca
- *
- * Así, con una sola foto por familia ya se cubre todo el catálogo,
- * y podés ir sumando fotos por modelo cuando las tengas.
- * Todos los archivos van en /public/motores/ en formato PNG.
+ * Muestra la foto del motor desde /public/motores/{src}.png
+ * Si `src` es null (foto no cargada todavía) muestra el placeholder de marca
+ * SIN hacer ningún request (cero errores 404 en consola).
  */
 export default function ProductImage({
-  sources,
+  src,
   alt,
   size = 40,
 }: {
-  sources: string[]
+  src: string | null
   alt: string
   size?: number
 }) {
-  const [idx, setIdx] = useState(0)
+  const [error, setError] = useState(false)
 
-  if (idx >= sources.length) {
+  if (!src || error) {
     return (
       <div className="motor-img-placeholder" aria-label={alt}>
         <Icon name="motor" size={size} />
@@ -35,11 +30,11 @@ export default function ProductImage({
   // eslint-disable-next-line @next/next/no-img-element
   return (
     <img
-      src={`/motores/${sources[idx]}.png`}
+      src={`/motores/${src}.png`}
       alt={alt}
       className="motor-img"
       loading="lazy"
-      onError={() => setIdx((i) => i + 1)}
+      onError={() => setError(true)}
     />
   )
 }

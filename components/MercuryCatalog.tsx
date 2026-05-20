@@ -14,7 +14,7 @@ import {
   usosDe,
   enRangoHp,
   descripcion,
-  imgSources,
+  imgSrc,
 } from '@/data/motores'
 
 function mensajeConsulta(m: Modelo) {
@@ -144,7 +144,7 @@ export default function MercuryCatalog() {
                   onMouseLeave={(e) => { e.currentTarget.style.transform = '' }}
                 >
                   <div className="motor-card-img">
-                    <ProductImage sources={imgSources(m)} alt={`Mercury ${m.hp} HP ${familiaInfo[m.fam].etiqueta}`} size={38} />
+                    <ProductImage src={imgSrc(m)} alt={`Mercury ${m.hp} HP ${familiaInfo[m.fam].etiqueta}`} size={38} />
                     <span className={`motor-fam-badge fam-${m.fam.replace(/\s+/g, '').toLowerCase()}`}>
                       {familiaInfo[m.fam].etiqueta}
                     </span>
@@ -204,7 +204,7 @@ export default function MercuryCatalog() {
           <div className="motor-modal" onClick={(e) => e.stopPropagation()}>
             <button className="motor-modal-close" onClick={() => setSel(null)} aria-label="Cerrar">×</button>
             <div className="motor-modal-img">
-              <ProductImage sources={imgSources(sel)} alt={`Mercury ${sel.hp} HP ${familiaInfo[sel.fam].etiqueta}`} size={72} />
+              <ProductImage src={imgSrc(sel)} alt={`Mercury ${sel.hp} HP ${familiaInfo[sel.fam].etiqueta}`} size={72} />
             </div>
             <div className="motor-modal-body">
               <span className={`motor-fam-badge fam-${sel.fam.replace(/\s+/g, '').toLowerCase()}`}>
@@ -250,7 +250,7 @@ export default function MercuryCatalog() {
                     {compara.map((m) => (
                       <th key={keyOf(m)}>
                         <div className="compare-th-img">
-                          <ProductImage sources={imgSources(m)} alt={`Mercury ${m.hp} HP`} size={32} />
+                          <ProductImage src={imgSrc(m)} alt={`Mercury ${m.hp} HP`} size={32} />
                         </div>
                         <span className={`motor-fam-badge fam-${m.fam.replace(/\s+/g, '').toLowerCase()}`}>
                           {familiaInfo[m.fam].etiqueta}

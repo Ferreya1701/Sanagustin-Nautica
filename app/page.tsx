@@ -15,7 +15,7 @@ export default function Home() {
         <section id="inicio" className="hero-band">
           <div className="container">
             <div className="hero-band-inner">
-              <div className="hero-band-tag">Distribuidores Oficiales · Santa Fe</div>
+              <div className="hero-band-tag">Distribuidor Oficial Mercury · Santa Fe</div>
               <h1>
                 Tu mundo<br />
                 <em>náutico</em>, aquí.

@@ -50,7 +50,7 @@ export default function Navbar() {
               />
               <div className="navbar-brand-text">
                 <span className="navbar-brand-name">Sanagustin Náutica</span>
-                <span className="navbar-brand-tag">Distribuidores Oficiales</span>
+                <span className="navbar-brand-tag">Distribuidor Oficial Mercury</span>
               </div>
             </a>
 

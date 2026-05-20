@@ -34,11 +34,11 @@ export default function Navbar() {
             {/* Logo */}
             <a href="#inicio" className="navbar-brand" onClick={() => handleLink('#inicio')}>
               <Image
-                src="/logo.png"
+                src="/s-blanca.png"
                 alt="Sanagustin Nautica"
-                height={48}
-                width={120}
-                style={{ objectFit: 'contain', filter: 'brightness(0) invert(1)' }}
+                height={46}
+                width={70}
+                style={{ objectFit: 'contain' }}
                 priority
               />
               <div className="navbar-brand-text">

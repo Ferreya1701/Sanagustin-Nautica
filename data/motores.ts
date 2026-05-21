@@ -118,6 +118,34 @@ export function enRangoHp(m: Modelo, rangoId: string): boolean {
   return hp >= r.min && hp <= r.max
 }
 
+/**
+ * Ficha técnica ORIENTATIVA derivada de la familia y potencia.
+ * ⚠️ Valores generales de la gama Mercury — confirmar con el brochure/ficha oficial.
+ */
+export function specs(m: Modelo): { k: string; v: string }[] {
+  const hp = parseFloat(m.hp)
+  const arranque = hp <= 6 ? 'Manual' : hp <= 30 ? 'Manual / Eléctrico' : 'Eléctrico'
+  const direccion =
+    m.fam === 'Verado' ? 'Hidráulica / Digital' :
+    hp >= 150 ? 'Remota / Hidráulica' :
+    hp >= 40 ? 'Remota' : 'Caña (timón)'
+  const cilindros =
+    m.tipo === 'V12' ? '12 cilindros (V12)' :
+    m.tipo === 'V10' ? '10 cilindros (V10)' :
+    m.tipo === 'V8' ? '8 cilindros (V8)' :
+    m.tipo === 'V6' ? '6 cilindros (V6)' :
+    hp <= 6 ? 'Monocilíndrico' :
+    hp <= 30 ? '2–3 cilindros en línea' :
+    '4 cilindros en línea'
+  return [
+    { k: 'Ciclo', v: '4 tiempos' },
+    { k: 'Cilindros', v: cilindros },
+    { k: 'Arranque', v: arranque },
+    { k: 'Dirección', v: direccion },
+    { k: 'Refrigeración', v: 'Por agua' },
+  ]
+}
+
 function tierUso(hp: number): string {
   if (hp <= 6) return 'Ideal para botes, gomones pequeños y como motor auxiliar. Liviano y fácil de transportar.'
   if (hp <= 20) return 'Perfecto para gomones, botes de pesca y embarcaciones livianas de uso recreativo.'

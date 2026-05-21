@@ -1070,6 +1070,7 @@ input, textarea, select { font-family: inherit; }
 .fam-proxs      { background: rgba(122,52,26,0.55);  color: #fab57d; border: 1px solid rgba(250,181,125,0.3); }
 .fam-verado     { background: rgba(82,52,122,0.55);  color: #cdb5f5; border: 1px solid rgba(205,181,245,0.3); }
 .fam-seapro     { background: rgba(26,107,62,0.55);  color: #7dfab5; border: 1px solid rgba(125,250,181,0.3); }
+.fam-2tiempos   { background: rgba(26,96,107,0.55);  color: #7de8fa; border: 1px solid rgba(125,232,250,0.3); }
 
 .motor-card-body {
   padding: 1.1rem 1.15rem 1.25rem;

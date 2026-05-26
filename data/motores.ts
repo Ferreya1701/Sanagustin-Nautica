@@ -197,7 +197,21 @@ export function modelSlug(m: Modelo): string {
  * Ejemplo cuando tengas las 4 fotos por familia:
  *   export const imagenesCargadas: string[] = ['fourstroke', 'proxs', 'verado', 'seapro']
  */
-export const imagenesCargadas: string[] = []
+export const imagenesCargadas: string[] = [
+  // Familias (fallback para modelos sin foto propia)
+  'fourstroke', 'proxs', 'verado', 'seapro', '2tiempos',
+  // FourStroke por modelo
+  'fourstroke-40', 'fourstroke-60', 'fourstroke-75', 'fourstroke-90',
+  'fourstroke-115', 'fourstroke-200', 'fourstroke-300',
+  // Pro XS por modelo
+  'proxs-115',
+  // Verado por modelo
+  'verado-250',
+  // SeaPro por modelo
+  'seapro-25', 'seapro-40', 'seapro-60',
+  // 2 Tiempos por modelo
+  '2tiempos-30', '2tiempos-40',
+]
 
 /** Devuelve el mejor slug de imagen disponible para el modelo, o null si no hay ninguna. */
 export function imgSrc(m: Modelo): string | null {

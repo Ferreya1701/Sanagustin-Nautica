@@ -6,7 +6,7 @@
  * Las fotos van en /public/motores/ (ver COMO-CARGAR-FOTOS.txt).
  */
 
-export type Familia = 'FourStroke' | 'Pro XS' | 'Verado' | 'SeaPro'
+export type Familia = 'FourStroke' | 'Pro XS' | 'Verado' | 'SeaPro' | '2 Tiempos'
 
 export const familiaInfo: Record<Familia, { etiqueta: string; desc: string; base: string }> = {
   FourStroke: {
@@ -28,6 +28,11 @@ export const familiaInfo: Record<Familia, { etiqueta: string; desc: string; base
     etiqueta: 'SeaPro',
     desc: 'Uso comercial e intensivo. Durabilidad y confiabilidad reforzadas para trabajo diario.',
     base: 'Construido para uso comercial e intensivo. Componentes reforzados y mayor durabilidad para soportar largas jornadas de trabajo en el agua, con la confiabilidad que exige el uso profesional.',
+  },
+  '2 Tiempos': {
+    etiqueta: '2 Tiempos',
+    desc: 'Livianos, simples y con gran relación peso-potencia. Ideales para botes, gomones y pesca.',
+    base: 'Motor de 2 tiempos: liviano, de arranque simple y excelente relación peso-potencia. Mantenimiento sencillo y gran confiabilidad, ideal para botes, gomones y embarcaciones de pesca y paseo.',
   },
 }
 
@@ -86,9 +91,20 @@ export const modelos: Modelo[] = [
   { fam: 'SeaPro', hp: '250', tipo: 'V8' },
   { fam: 'SeaPro', hp: '300', tipo: 'V8' },
   { fam: 'SeaPro', hp: '500', tipo: 'V10' },
+  // ── 2 Tiempos (hasta 60 HP) ──
+  { fam: '2 Tiempos', hp: '3.3', tipo: 'Portátil' },
+  { fam: '2 Tiempos', hp: '5', tipo: 'Portátil' },
+  { fam: '2 Tiempos', hp: '8', tipo: 'Liviano' },
+  { fam: '2 Tiempos', hp: '9.9', tipo: 'Liviano' },
+  { fam: '2 Tiempos', hp: '15', tipo: 'Liviano' },
+  { fam: '2 Tiempos', hp: '25', tipo: 'Mediano' },
+  { fam: '2 Tiempos', hp: '30', tipo: 'Mediano' },
+  { fam: '2 Tiempos', hp: '40', tipo: 'Mediano' },
+  { fam: '2 Tiempos', hp: '50', tipo: 'Mediano' },
+  { fam: '2 Tiempos', hp: '60', tipo: 'Mediano' },
 ]
 
-export const filtros: ('Todos' | Familia)[] = ['Todos', 'FourStroke', 'Pro XS', 'Verado', 'SeaPro']
+export const filtros: ('Todos' | Familia)[] = ['Todos', 'FourStroke', 'Pro XS', 'Verado', 'SeaPro', '2 Tiempos']
 
 /** Rangos de potencia para el filtro avanzado */
 export const rangosHp = [
@@ -103,6 +119,7 @@ export const usos = ['Todos', 'Pesca', 'Deportivo', 'Recreativo', 'Crucero', 'Co
 
 /** Usos recomendados de cada modelo (derivado de familia + potencia) */
 export function usosDe(m: Modelo): string[] {
+  if (m.fam === '2 Tiempos') return ['Pesca', 'Recreativo']
   if (m.fam === 'SeaPro') return ['Comercial', 'Recreativo']
   if (m.fam === 'Pro XS') return ['Pesca', 'Deportivo']
   if (m.fam === 'Verado') return ['Crucero', 'Deportivo']
@@ -138,7 +155,7 @@ export function specs(m: Modelo): { k: string; v: string }[] {
     hp <= 30 ? '2–3 cilindros en línea' :
     '4 cilindros en línea'
   return [
-    { k: 'Ciclo', v: '4 tiempos' },
+    { k: 'Ciclo', v: m.fam === '2 Tiempos' ? '2 tiempos' : '4 tiempos' },
     { k: 'Cilindros', v: cilindros },
     { k: 'Arranque', v: arranque },
     { k: 'Dirección', v: direccion },
@@ -180,7 +197,21 @@ export function modelSlug(m: Modelo): string {
  * Ejemplo cuando tengas las 4 fotos por familia:
  *   export const imagenesCargadas: string[] = ['fourstroke', 'proxs', 'verado', 'seapro']
  */
-export const imagenesCargadas: string[] = []
+export const imagenesCargadas: string[] = [
+  // Familias (fallback para modelos sin foto propia)
+  'fourstroke', 'proxs', 'verado', 'seapro', '2tiempos',
+  // FourStroke por modelo
+  'fourstroke-40', 'fourstroke-60', 'fourstroke-75', 'fourstroke-90',
+  'fourstroke-115', 'fourstroke-200', 'fourstroke-300',
+  // Pro XS por modelo
+  'proxs-115',
+  // Verado por modelo
+  'verado-250',
+  // SeaPro por modelo
+  'seapro-25', 'seapro-40', 'seapro-60',
+  // 2 Tiempos por modelo
+  '2tiempos-30', '2tiempos-40',
+]
 
 /** Devuelve el mejor slug de imagen disponible para el modelo, o null si no hay ninguna. */
 export function imgSrc(m: Modelo): string | null {
